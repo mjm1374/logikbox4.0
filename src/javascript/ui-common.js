@@ -29,4 +29,4 @@
 
 
     console.log(Logikbox.Common);
-    console.log(Logikbox.Common.go("hello Mike"));
+    console.log(Logikbox.Common.go("hello beautiful!"));
