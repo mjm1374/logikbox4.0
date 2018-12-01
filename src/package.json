@@ -9,11 +9,22 @@
   "author": "Mike McAllister",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^9.3.1",
+    "bootstrap": "^4.1.3",
     "bootstrap-scss": "^4.1.3",
     "grunt": "^1.0.3",
-    "jquery": "^3.3.1"
+    "grunt-browserify": "^5.3.0",
+    "grunt-contrib-cssmin": "^3.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^4.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-postcss": "^0.9.0",
+    "jquery": "^3.3.1",
+    "ruby": "^0.6.1",
+    "sass": "^1.15.1"
   },
   "devDependencies": {
+    "autoprefixer": "^9.3.1",
     "grunt-browserify": "^5.3.0",
     "grunt-contrib-cssmin": "^3.0.0",
     "grunt-contrib-uglify": "^4.0.0",
