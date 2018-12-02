@@ -23,7 +23,7 @@ $(function(){
     //Make me some boxes
 
     for(i=0; i < 100; i++){
-        boxes.push(new Box(i,'test', 100, 100, getRandomFloat(200,(xLimit-150)),getRandomFloat(100,(yLimit-150)),getRandomFloat(1,5),getRandomFloat(1,5),colors[Math.floor(getRandomFloat(0,4))],'generic'));
+        boxes.push(new Box(i,'test', 100, 100, getRandomFloat(0,(xLimit-150)),getRandomFloat(0,(yLimit-150)),getRandomFloat(1,5),getRandomFloat(1,5),colors[Math.floor(getRandomFloat(0,5))],'generic'));
     }
 
 
@@ -34,7 +34,7 @@ $(function(){
             $('#animBox'  + boxes[key].id )
             .css('color', boxes[key].color).css('border-color', boxes[key].color).addClass('animBox');
             $('#animBox'  + boxes[key].id ).html('<span>' + boxes[key].id  + '</span>');
-            console.log(boxes[key].color);
+            //console.log(boxes[key].color);
         }
 
     }
