@@ -1,13 +1,17 @@
  var boxes = [],
         xLimit = resetWindowLimit("x"),
         yLimit = resetWindowLimit("y"),
+        sqFt = (xLimit * yLimit) ,
+        bubbleCnt = 50;
         colors =  ['#edc951', '#eb6841', '#cc2a36' , '#4f372d', '#00a0b0']
         ;
-
+console.log(sqFt);
     //Box( id, title, xcord, ycord, xvel, yvel, color, type)
     //Make me some boxes
- for(i=0; i < 100; i++){
-        boxes.push(new Box(i,'test', 100, 100, getRandomFloat(0,(xLimit-150)),getRandomFloat(0,(yLimit-150)),getRandomFloat(1,5),getRandomFloat(1,5),colors[Math.floor(getRandomFloat(0,5))],'generic'));
+ for(i=0; i < bubbleCnt; i++){
+        thisBubbleSize = Math.floor(getRandomFloat(50,100));
+        thisBubbleSize = 100;
+        boxes.push(new Box(i,'test', thisBubbleSize, thisBubbleSize, getRandomFloat(0,(xLimit-150)),getRandomFloat(0,(yLimit-150)),getRandomFloat(-5,5),getRandomFloat(-5,5),colors[Math.floor(getRandomFloat(0,5))],'generic'));
     }
 
 
@@ -18,16 +22,16 @@ function resetWindowLimit(whatDim){
     if(whatDim == "x") {
         newDim = window.innerWidth;
         for(i=0; i < boxes.length; i++){
-            if(boxes[i].xcord >= (newDim - 100)){
-                boxes[i].changexPosition((newDim - 100));
+            if(boxes[i].xcord >= (newDim - boxes[i].width)){
+                boxes[i].changexPosition((newDim - boxes[i].width));
             }
         }
 
     } else {
         newDim = window.innerHeight;
         for(i=0; i < boxes.length; i++){
-            if(boxes[i].ycord >= (newDim - 100)){
-               boxes[i].changeyPosition((newDim - 100));
+            if(boxes[i].ycord >= (newDim - boxes[i].height)){
+               boxes[i].changeyPosition((newDim - boxes[i].height));
             }
 
         }
@@ -68,6 +72,24 @@ function animateBoxes(obj){
                 }
 
 
+                //color collision
+                //for(i=0; i < boxes.length; i++){
+                //    if(boxes[i].ycord >= boxes[key].ycord && boxes[i].ycord <= (boxes[key].ycord - 100) && boxes[i].xcord >= boxes[key].xcord && boxes[i].xcord <= (boxes[key].xcord - 100) && boxes[i].color == boxes[key].color ){
+                //        $('#animBox'  + boxes[key].id )
+                //        .css('background-color', boxes[key].color);
+                //        $('#animBox'  + boxes[i].id )
+                //        .css('background-color', boxes[key].color);
+                //    }else{
+                //
+                //        $('#animBox'  + boxes[key].id )
+                //        .css('background-color', 'transparent');
+                //        $('#animBox'  + boxes[i].id )
+                //        .css('background-color', 'transparent');
+                //    }
+                //
+                //}
+
+
 
 
                 $('#animBox'  + boxes[key].id )
@@ -84,29 +106,32 @@ function animateBoxes(obj){
         return Math.random() * (max - min) + min;
       }
 
-$(function(){
+$(function(){ // Doc Ready
 
     for (var key in boxes) {
+
         if (boxes.hasOwnProperty(key)) {
             $('body')
             .append("<div id='animBox" + boxes[key].id + "' data-id='" + boxes[key].id  + "'class='clicker'></div>" );
             $('#animBox'  + boxes[key].id )
-            .css('color', boxes[key].color).css('border-color', boxes[key].color).addClass('animBox');
+            .css('color', boxes[key].color).css('border-color', boxes[key].color).css('width', boxes[key].width).css('height', boxes[key].height).addClass('animBox');
             $('#animBox'  + boxes[key].id ).html('<span>' + boxes[key].id  + '</span>');
             //console.log(boxes[key].color);
         }
 
     }
 
-    $('.clicker').click(function(){
-        var thisID =  $(this).data( "id" );
-        alert(boxes[thisID].xvel + " - " + boxes[thisID].yvel);
+    // click on an obj
+    //$('.clicker').click(function(){
+    //    var thisID =  $(this).data( "id" );
+    //    alert(boxes[thisID].xvel + " - " + boxes[thisID].yvel);
+    //
+    //    });
 
-        });
     //kick off animation
     setInterval(function(){
         animateBoxes(boxes);
-        }, 10);
+        }, 20);
 
 
 
