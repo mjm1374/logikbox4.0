@@ -2,10 +2,10 @@
         xLimit = resetWindowLimit("x"),
         yLimit = resetWindowLimit("y"),
         sqFt = (xLimit * yLimit) ,
-        bubbleCnt = 50;
+        bubbleCnt = 100;
         colors =  ['#edc951', '#eb6841', '#cc2a36' , '#4f372d', '#00a0b0']
         ;
-console.log(sqFt);
+//console.log(sqFt);
     //Box( id, title, xcord, ycord, xvel, yvel, color, type)
     //Make me some boxes
  for(i=0; i < bubbleCnt; i++){
@@ -23,7 +23,7 @@ function resetWindowLimit(whatDim){
         newDim = window.innerWidth;
         for(i=0; i < boxes.length; i++){
             if(boxes[i].xcord >= (newDim - boxes[i].width)){
-                boxes[i].changexPosition((newDim - boxes[i].width));
+                boxes[i].changePosition('x',(newDim - boxes[i].width));
             }
         }
 
@@ -31,7 +31,7 @@ function resetWindowLimit(whatDim){
         newDim = window.innerHeight;
         for(i=0; i < boxes.length; i++){
             if(boxes[i].ycord >= (newDim - boxes[i].height)){
-               boxes[i].changeyPosition((newDim - boxes[i].height));
+               boxes[i].changePosition('y',(newDim - boxes[i].height));
             }
 
         }
@@ -46,12 +46,11 @@ function animateBoxes(obj){
         for (var key in boxes) {
             if (boxes.hasOwnProperty(key)) {
                 var newVel ;
-
                 //console.log("box: " + boxes[key].xcord + " - " + boxes[key].ycord);
                 //console.log("in vololation", boxes[key].ycord >= yLimit, yLimit, boxes[key].yvel );
 
-                boxes[key].changexPosition((boxes[key].xcord + boxes[key].xvel));
-                boxes[key].changeyPosition((boxes[key].ycord + boxes[key].yvel));
+                boxes[key].changePosition('x',(boxes[key].xcord + boxes[key].xvel));
+                boxes[key].changePosition('y',(boxes[key].ycord + boxes[key].yvel));
 
                 if (boxes[key].xcord <= 0 || boxes[key].xcord >= (xLimit - boxes[key].width)){
                     if(Math.sign(boxes[key].xvel) >= 0){
@@ -59,7 +58,7 @@ function animateBoxes(obj){
                         }else{
                             newVel = Math.abs(boxes[key].xvel);
                         }
-                    boxes[key].changexVelocity(newVel);
+                    boxes[key].changeVelocity('x',newVel);
                 }
 
                 if (boxes[key].ycord <= 0 || boxes[key].ycord >= (yLimit - boxes[key].height)){
@@ -68,24 +67,26 @@ function animateBoxes(obj){
                         }else{
                             newVel = Math.abs(boxes[key].yvel);
                         }
-                    boxes[key].changeyVelocity(newVel);
+                    boxes[key].changeVelocity('y',newVel);
                 }
 
 
-                //color collision
                 //for(i=0; i < boxes.length; i++){
-                //    if(boxes[i].ycord >= boxes[key].ycord && boxes[i].ycord <= (boxes[key].ycord - 100) && boxes[i].xcord >= boxes[key].xcord && boxes[i].xcord <= (boxes[key].xcord - 100) && boxes[i].color == boxes[key].color ){
-                //        $('#animBox'  + boxes[key].id )
-                //        .css('background-color', boxes[key].color);
+                // if(boxes[key].ycord  >= boxes[i].ycord && boxes[key].ycord  <= (boxes[i].ycord + boxes[i].width) && boxes[key].xcord  >= boxes[i].xcord && boxes[key].xcord  <= (boxes[i].xcord + boxes[i].height)) {
+                //
+                //  console.log('boop');
+                //  //$('#animBox'  + boxes[key].id )
+                //  //      .css('background-color', boxes[key].color);
                 //        $('#animBox'  + boxes[i].id )
                 //        .css('background-color', boxes[key].color);
                 //    }else{
                 //
-                //        $('#animBox'  + boxes[key].id )
-                //        .css('background-color', 'transparent');
+                //        //$('#animBox'  + boxes[key].id )
+                //        //.css('background-color', 'transparent');
                 //        $('#animBox'  + boxes[i].id )
                 //        .css('background-color', 'transparent');
                 //    }
+                //
                 //
                 //}
 
@@ -131,7 +132,7 @@ $(function(){ // Doc Ready
     //kick off animation
     setInterval(function(){
         animateBoxes(boxes);
-        }, 20);
+        },20);
 
 
 

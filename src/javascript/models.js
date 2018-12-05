@@ -14,20 +14,36 @@
         this.changeColor = function (color) {
             this.color = color;
         };
-        this.changexVelocity = function (speed) {
-            this.xvel = speed;
+        //this.changexVelocity = function (speed) {
+        //    this.xvel = speed;
+        //};
+        //
+        //this.changeyVelocity = function (speed) {
+        //    this.yvel = speed;
+        //};
+
+        this.changeVelocity = function (dir,speed) {
+
+            if(dir == 'x'){
+                this.xvel = speed;
+            }
+            if(dir == 'y'){
+                this.yvel = speed;
+            }
         };
 
-        this.changeyVelocity = function (speed) {
-            this.yvel = speed;
+        this.changePosition = function (dir,loc) {
+            if (dir == 'x'){
+                this.xcord = loc;
+            }
+
+            if (dir == 'y'){
+                this.ycord = loc;
+            }
+
         };
 
-        this.changexPosition = function (loc) {
-            this.xcord = loc;
-        };
-        this.changeyPosition = function (loc) {
-            this.ycord = loc;
-        };
+
         this.getVelocity = function (direction) {
           return this.direction; // I should return the requested directional velocity
 
