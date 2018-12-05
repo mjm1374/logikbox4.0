@@ -129,13 +129,14 @@ $(function(){ // Doc Ready
     //    });
 
     //kick off animation
-    setInterval(function(){
+    var makeBubles = setInterval(function(){
         animateBoxes(boxes);
         }, 20);
 
 
-
-
+    $('#button').click(function(){
+           clearInterval(makeBubles);
+     });
 });
 
 $( window ).resize(function() {
