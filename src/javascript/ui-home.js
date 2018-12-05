@@ -23,7 +23,7 @@ function resetWindowLimit(whatDim){
         newDim = window.innerWidth;
         for(i=0; i < boxes.length; i++){
             if(boxes[i].xcord >= (newDim - boxes[i].width)){
-                boxes[i].changexPosition((newDim - boxes[i].width));
+                boxes[i].changePosition('x',(newDim - boxes[i].width));
             }
         }
 
@@ -31,7 +31,7 @@ function resetWindowLimit(whatDim){
         newDim = window.innerHeight;
         for(i=0; i < boxes.length; i++){
             if(boxes[i].ycord >= (newDim - boxes[i].height)){
-               boxes[i].changeyPosition((newDim - boxes[i].height));
+               boxes[i].changePosition('y',(newDim - boxes[i].height));
             }
 
         }
@@ -50,8 +50,8 @@ function animateBoxes(obj){
                 //console.log("box: " + boxes[key].xcord + " - " + boxes[key].ycord);
                 //console.log("in vololation", boxes[key].ycord >= yLimit, yLimit, boxes[key].yvel );
 
-                boxes[key].changexPosition((boxes[key].xcord + boxes[key].xvel));
-                boxes[key].changeyPosition((boxes[key].ycord + boxes[key].yvel));
+                boxes[key].changePosition('x',(boxes[key].xcord + boxes[key].xvel));
+                boxes[key].changePosition('y',(boxes[key].ycord + boxes[key].yvel));
 
                 if (boxes[key].xcord <= 0 || boxes[key].xcord >= (xLimit - boxes[key].width)){
                     if(Math.sign(boxes[key].xvel) >= 0){
@@ -59,7 +59,7 @@ function animateBoxes(obj){
                         }else{
                             newVel = Math.abs(boxes[key].xvel);
                         }
-                    boxes[key].changexVelocity(newVel);
+                    boxes[key].changeVelocity('x',newVel);
                 }
 
                 if (boxes[key].ycord <= 0 || boxes[key].ycord >= (yLimit - boxes[key].height)){
@@ -68,7 +68,7 @@ function animateBoxes(obj){
                         }else{
                             newVel = Math.abs(boxes[key].yvel);
                         }
-                    boxes[key].changeyVelocity(newVel);
+                    boxes[key].changeVelocity('y',newVel);
                 }
 
 
