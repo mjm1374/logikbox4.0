@@ -130,6 +130,12 @@ function animateBoxes(obj){
 
                 }
 
+                if (mode == "gravity"){
+
+                 boxes[key].newPos();
+
+                }
+
 
 
 
@@ -194,6 +200,12 @@ $(function(){ // Doc Ready
         if (boxes[key].xcord <= 0 || boxes[key].xcord >= (xLimit - boxes[key].width) || boxes[key].ycord <= 0 || boxes[key].ycord >= (yLimit - boxes[key].height)){
          boxes[key].oob = true;
         }
+       }
+      }
+
+      if(mode == 'gravity'){
+       for (var key in boxes) {
+         boxes[key].resetGravity();
        }
       }
 

@@ -77,11 +77,14 @@
             z-index: 10000;
             margin:0 auto;
             bottom: 50px;
-            width:225px;
+            width:350px;
         }
 
-        .cntrlButton:first-child{
+        .cntrlButton{
             margin-right:20px;
+        }
+        cntrlButton:last-child{
+            margin-right:0px;
         }
 
 
@@ -96,6 +99,7 @@
     <div id="controls" style="position: relative; left: -50%;">
         <button id="bubbles" class="cntrlButton btn" data-mode="bubbles">Bubbles</button>
         <button id="atreoids" class="cntrlButton btn" data-mode="asteroids">Asteroids</button>
+        <button id="gravity" class="cntrlButton btn" data-mode="gravity">Gravity</button>
     </div>
 </div>
 </body>
