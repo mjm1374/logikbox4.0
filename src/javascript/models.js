@@ -1,5 +1,5 @@
 // Constructor function for Person objects
-    function Box( id, title, width, height, xcord, ycord, xvel, yvel, color, type) {
+    function Box( id, title, width, height, xcord, ycord, xvel, yvel, color, type, oob) {
         this.id = id;
         this.title = title;
         this.width = width;
@@ -10,17 +10,15 @@
         this.yvel = yvel;
         this.color = color;
         this.type = type;
+        this.oob = oob; // Out of bounds
 
         this.changeColor = function (color) {
             this.color = color;
         };
-        //this.changexVelocity = function (speed) {
-        //    this.xvel = speed;
-        //};
-        //
-        //this.changeyVelocity = function (speed) {
-        //    this.yvel = speed;
-        //};
+
+        this.oob = function (oob) {
+            this.oob = oob;
+        };
 
         this.changeVelocity = function (dir,speed) {
 
