@@ -28,9 +28,19 @@
         };
 
         this.hitBottom = function() {
-            var rockbottom = window.innerHeight - this.height;
+            var rockbottom = window.screen.availHeight - this.height;
             if (this.ycord > rockbottom) {
                 this.ycord = rockbottom;
+            }
+
+            if (this.xcord > (window.innerWidth + this.width)){
+                this.xcord = (0 - this.width);
+
+            }
+
+            if (this.xcord < (0 - this.width)){
+                this.xcord = (window.innerWidth + this.width);
+
             }
         };
 
