@@ -53,6 +53,12 @@ function animateBoxes(obj){
                 boxes[key].changePosition('x',(boxes[key].xcord + boxes[key].xvel));
                 boxes[key].changePosition('y',(boxes[key].ycord + boxes[key].yvel));
 
+                //let thisBubble = $('#whatBubbule');
+                //if(thisBubble.val != undefined && thisBubble.val != ""){
+                // x = thisBubble.val();
+                // console.log(boxes[x]);
+                //}
+
 
                 if (mode == "bubbles"){
 
@@ -189,6 +195,8 @@ $(function(){ // Doc Ready
         }
 
     }
+
+
 
     $('.cntrlButton').click(function(){
       console.log($(this).data("mode"));
