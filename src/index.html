@@ -30,12 +30,16 @@
             /*width:100px;
             height:100px;*/
             display:block;
-            border: 3px solid red;
+            font-size:2em;
             position: absolute;
             left: -100px;
             top:-100px;
-            border-radius: 50%;
+            /*
+             *border: 3px solid red;
+             *border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.3);
+            */
+            fill: rgba(255, 255, 255, 0.3);
 
         }
 
@@ -88,7 +92,8 @@
 <h1>Logikbox</h1>
 <p>From humble beginnings.......</p>
 <div class="container">
-       <input id="whatBubbule" type="text">
+       <input id="whatBubbule" type="text"><br />
+       <button class="cntrlButton btn" data-mode="stop">Stop</button>
 </div>
 <div style="position: absolute; left: 50%; bottom:50px;">
     <div id="controls" style="position: relative; left: -50%;">

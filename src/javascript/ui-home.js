@@ -1,13 +1,13 @@
  var boxes = [],
         xLimit = resetWindowLimit("x") -1,
         yLimit = resetWindowLimit("y") - 1,
-        sqFt = (xLimit * yLimit) ,
+        //sqFt = (xLimit * yLimit),
         mode = 'bubbles',
         bubbleCnt = 100;
         colors =  ['#edc951', '#eb6841', '#cc2a36' , '#4f372d', '#00a0b0']
         ;
 //console.log(sqFt);
-    //Box( id, title, xcord, ycord, xvel, yvel, color, type)
+    //Box( id, title, xcord, ycord, xvel, yvel, color, type, oob)
     //Make me some boxes
  for(i=0; i < bubbleCnt; i++){
         thisBubbleSize = Math.floor(getRandomFloat(50,100));
@@ -50,8 +50,8 @@ function animateBoxes(obj){
                 //console.log("box: " + boxes[key].xcord + " - " + boxes[key].ycord);
                 //console.log("in vololation", boxes[key].ycord >= yLimit, yLimit, boxes[key].yvel );
 
-                boxes[key].changePosition('x',(boxes[key].xcord + boxes[key].xvel));
-                boxes[key].changePosition('y',(boxes[key].ycord + boxes[key].yvel));
+                boxes[key].changePosition((boxes[key].xcord + boxes[key].xvel),(boxes[key].ycord + boxes[key].yvel));
+
 
                 //let thisBubble = $('#whatBubbule');
                 //if(thisBubble.val != undefined && thisBubble.val != ""){
@@ -84,9 +84,9 @@ function animateBoxes(obj){
                              boxes[key].ycord = 5;
                          }
                  }
-                boxes[key].changePosition('x',(boxes[key].xcord + boxes[key].xvel));
-                boxes[key].changePosition('y',(boxes[key].ycord + boxes[key].yvel));
-                boxes[key].oob = false;
+                boxes[key].changePosition((boxes[key].xcord + boxes[key].xvel),(boxes[key].ycord + boxes[key].yvel));
+
+
 
                   }
                   else {
@@ -187,13 +187,12 @@ $(function(){ // Doc Ready
 
         if (boxes.hasOwnProperty(key)) {
             $('body')
-            .append("<div id='animBox" + boxes[key].id + "' data-id='" + boxes[key].id  + "'class='clicker'></div>" );
+            .append("<svg id='animBox" + boxes[key].id + "' data-id='" + boxes[key].id  + "'class='clicker'><circle cx='" + (boxes[key].width /2) + "' cy='"+ (boxes[key].height /2) + "' r='" + (boxes[key].width /2 -5) + "' stroke='" + boxes[key].color + "' stroke-width='2'  /><text x='20' y='50' fill='" + boxes[key].color  + "'>" + boxes[key].id +"</text></svg>" );
             $('#animBox'  + boxes[key].id )
             .css('color', boxes[key].color).css('border-color', boxes[key].color).css('width', boxes[key].width).css('height', boxes[key].height).addClass('animBox');
-            $('#animBox'  + boxes[key].id ).html('<span>' + boxes[key].id  + '</span>');
+            //$('#animBox'  + boxes[key].id ).html('<span>' + boxes[key].id  + '</span>');
             //console.log(boxes[key].color);
         }
-
     }
 
 
@@ -217,6 +216,10 @@ $(function(){ // Doc Ready
        }
       }
 
+      if(mode == 'gravity'){
+       clearInterval('startBubbletron');
+      }
+
      });
 
     // click on an obj
@@ -227,7 +230,7 @@ $(function(){ // Doc Ready
         });
 
     //kick off animation
-    setInterval(function(){
+    var startBubbletron = setInterval(function(){
         animateBoxes(boxes);
         },20);
 

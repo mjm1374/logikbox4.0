@@ -70,15 +70,9 @@
             }
         };
 
-        this.changePosition = function (dir,loc) {
-            if (dir == 'x'){
-                this.xcord = loc;
-            }
-
-            if (dir == 'y'){
-                this.ycord = loc;
-            }
-
+        this.changePosition = function (x,y) {
+                this.xcord = x;
+                this.ycord = y;
         };
 
 
