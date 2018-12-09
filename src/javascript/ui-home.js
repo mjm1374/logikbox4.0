@@ -85,6 +85,7 @@ function animateBoxes(obj){
                          }
                  }
                 boxes[key].changePosition((boxes[key].xcord + boxes[key].xvel),(boxes[key].ycord + boxes[key].yvel));
+                boxes[key].oob = false;
 
 
 
@@ -187,7 +188,7 @@ $(function(){ // Doc Ready
 
         if (boxes.hasOwnProperty(key)) {
             $('body')
-            .append("<svg id='animBox" + boxes[key].id + "' data-id='" + boxes[key].id  + "'class='clicker'><circle cx='" + (boxes[key].width /2) + "' cy='"+ (boxes[key].height /2) + "' r='" + (boxes[key].width /2 -5) + "' stroke='" + boxes[key].color + "' stroke-width='2'  /><text x='20' y='50' fill='" + boxes[key].color  + "'>" + boxes[key].id +"</text></svg>" );
+            .append("<svg id='animBox" + boxes[key].id + "' data-id='" + boxes[key].id  + "'class='clicker'><circle cx='" + (boxes[key].width /2) + "' cy='"+ (boxes[key].height /2) + "' r='" + (boxes[key].width /2 -2) + "' stroke='" + boxes[key].color + "' stroke-width='2'  /><text x='20' y='50' fill='" + boxes[key].color  + "'>" + boxes[key].id +"</text></svg>" );
             $('#animBox'  + boxes[key].id )
             .css('color', boxes[key].color).css('border-color', boxes[key].color).css('width', boxes[key].width).css('height', boxes[key].height).addClass('animBox');
             //$('#animBox'  + boxes[key].id ).html('<span>' + boxes[key].id  + '</span>');
